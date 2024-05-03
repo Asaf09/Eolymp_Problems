@@ -1,0 +1,34 @@
+#include <iostream>
+#include <deque>
+using namespace std;
+
+
+int main(){
+    deque <int> d1;
+    int operation;
+    cin >> operation;
+    int choice;
+    for(int i=0;i<operation;i++){
+        cin >> choice;
+        if(choice==1 || choice==2){
+            int input;
+            cin >> input;
+            if(choice==1){
+                d1.push_front(input);
+            }
+            else if(choice==2){
+                d1.push_back(input);
+
+            }
+        }
+        else if(choice==3){
+            cout << d1.front() << endl;
+            d1.pop_front();
+        }
+        else if(choice==4){
+            cout << d1.back() << endl;
+            d1.pop_back();
+        }
+    }
+    return 0;
+}
