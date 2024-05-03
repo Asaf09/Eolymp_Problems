@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+#include <stack>
+
+
+int main(){
+    stack <int> s;
+    string command;
+    int input;
+    do
+    {
+        cin >> command;
+        if(command=="push"){
+            cin >> input;
+            s.push(input);
+            cout << "ok" << endl;
+        }
+        else if(command=="pop"){
+            cout << s.top() << endl;
+            s.pop();
+        }
+        else if(command=="back"){
+            cout << s.top() << endl;
+        }
+        else if(command=="size"){
+            cout << s.size() << endl;
+        }
+        else if(command=="clear"){
+            while(s.size()!=0){
+                s.pop();
+            }
+            cout << "ok" << endl;
+        }
+    } while (command!="exit");
+    if(command=="exit"){
+        cout << "bye" << endl;
+    }
+    return 0;
+}
