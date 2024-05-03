@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+string findLongestCommonSubsequence(const string& a, const string& b) {
+    int n = a.size();
+    int m = b.size();
+    vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= m; ++j) {
+            if (a[i - 1] == b[j - 1])
+                dp[i][j] = 1 + dp[i - 1][j - 1];
+            else
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+        }
+    }
+
+    string commonStr;
+    int indx = dp[n][m] - 1;
+    int i = n;
+    int j = m;
+
+    while (i > 0 && j > 0) {
+        if (a[i - 1] == b[j - 1]) {
+            commonStr = a[i - 1] + commonStr;
+            indx--;
+            i--;
+            j--;
+        } else if (dp[i - 1][j] > dp[i][j - 1]) {
+            i--;
+        } else {
+            j--;
+        }
+    }
+
+    return commonStr;
+}
+
+int main() {
+    string a, b;
+    cin >> a;
+    cin >> b;
+
+    string commonStr = findLongestCommonSubsequence(a, b);
+    cout << commonStr << endl;
+
+    return 0;
+}
