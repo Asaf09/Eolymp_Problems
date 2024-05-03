@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+#include <stack>
+#include <vector>
+
+int main(){
+    int n;
+    cin >> n;
+    stack <int> s;
+    int input;
+    vector <int> v;
+    for(int i=0;i<n;i++){
+        cin >> input;
+        v.push_back(input);
+        if(s.empty()){
+            s.push(input);
+        }
+        else if(s.top()!=input){
+            s.pop();
+        }
+        else if(s.top()==input){
+            s.push(input);
+        }
+
+    }
+    int count=0;
+    if(s.size()!=0){
+        for(int i=0;i<v.size();i++){
+            if(v[i]==s.top()){
+                count++;
+            }
+        }
+    }
+    bool c=false;
+    if(s.size()!=0){
+        if(count>n/2){
+            c=true;
+            cout << s.top();
+        }
+    }
+    if(c==false){
+        cout << -1;
+    }
+    return 0;
+}
