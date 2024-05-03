@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+#include <string>
+
+using namespace std;
+
+int main() {
+    vector<stack<int>> mystack;
+    vector<int> fr(1001, 0);
+    string command;
+    int numer;
+    
+    while (cin >> command && command != "exit") {
+        if (command == "push") {
+            cin >> numer;
+            int fr1 = fr[numer];
+            if (fr1 == mystack.size()) {
+                mystack.emplace_back();
+            }
+            mystack[fr1].push(numer);
+            fr[numer]++;
+        } else if (command == "pop") {
+            int i = mystack.size();
+            while (i > 0 && mystack[i - 1].empty()) {
+                mystack.pop_back();
+                i--;
+            }
+            if (!mystack.empty()) {
+                int x = mystack[i - 1].top();
+                mystack[i - 1].pop();
+                fr[x]--;
+                cout << x << endl;
+            }
+        }
+    }
+    
+    return 0;
+}
