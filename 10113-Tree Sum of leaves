@@ -1,0 +1,16 @@
+int SumLeaves(TreeNode *tree){
+    if(tree==nullptr){
+        return 0;
+    }
+    if(tree->left==nullptr && tree->right==nullptr){
+        return tree->val;
+    }
+    int sum=0;
+    if(tree->left!=nullptr){
+        sum+=SumLeaves(tree->left);
+    }
+    if(tree->right!=nullptr){
+        sum+=SumLeaves(tree->right);
+    }
+    return sum;
+}
