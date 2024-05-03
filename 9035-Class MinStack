@@ -1,0 +1,31 @@
+class MyStack{
+    private:
+    stack <int> s, min;
+    public:
+    void push(int x){
+        s.push(x);
+        if(min.empty() || x<min.top()){
+            min.push(x);
+        }
+        else{
+            min.push(min.top());
+        }
+    }
+    int pop(){
+        if(s.empty()) return 0;
+        min.pop();
+        int x=s.top();
+        s.pop();
+        return x;
+    }
+    int top(){
+        if(!s.empty()) return s.top();
+    }
+    int GetMin(){
+        if(!min.empty()) return min.top();
+        return 0;
+    }
+    int GetSize(){
+        return s.size();
+    }
+};
