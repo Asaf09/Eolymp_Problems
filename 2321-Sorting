@@ -1,0 +1,38 @@
+#include <iostream>
+
+using namespace std;
+
+void Selection_Sort(int length, int* arr) {
+    for (int i = 0;i < length - 1;i++) {
+        int min = i;
+        for (int j = i + 1;j < length;j++) {
+            if (arr[j] < arr[min]) {
+                min = j;
+            }
+        }
+        if (min != i) {
+            int temp = arr[i];
+            arr[i] = arr[min];
+            arr[min] = temp;
+        }
+    }
+}
+void Print(int length, int* arr) {
+    for (int i = 0;i < length;++i) {
+        cout << arr[i] << " ";
+    }
+}
+int main() {
+    int n;
+    cin >> n;
+    int* res = new int[n];
+    int number;
+    for (int i = 0;i < n;i++) {
+        cin >> number;
+        res[i] = number;
+    }
+    Selection_Sort(n, res);
+    Print(n, res);
+    delete[] res;
+    return 0;
+}
