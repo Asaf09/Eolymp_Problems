@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+    int v,e;
+    cin >> v >> e;
+    int mat[v+1][v+1];
+    int a,b;
+    for(int i=1;i<=e;i++){
+        cin >> a >> b;
+        mat[a][b]=1;
+        mat[b][a]=1;
+    }
+    int count;
+    for(int i=1;i<=v;i++){
+        count=0;
+        for(int j=1;j<=v;j++){
+            if(mat[i][j]==1) count++;
+        }
+        cout << count << endl;
+    }
+    return 0;
+}
