@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+#define max 100
+int mat[max][max];
+int used[max];
+int n,v,countVisited;
+
+void dfsMatrix(int v){
+    used[v]=1;
+    countVisited++;
+    cout << v << " ";
+
+    for(int i=1;i<=n;i++){
+        if(used[i]==0 && mat[v][i]==1){
+            dfsMatrix(i);
+        }
+    }
+
+
+}
+int main(){
+    int m,a,b;
+    cin >> n >> m;
+    for(int i=1;i<=m;i++){
+        cin >> a >> b;
+        mat[a][b]=1;
+        mat[b][a]=1;
+    }
+    cin >> v;
+    dfsMatrix(v);
+    return 0;
+}
