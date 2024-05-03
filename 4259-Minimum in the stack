@@ -1,0 +1,39 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main()
+{
+    int operation;
+    cin >> operation;
+    int input;
+    stack<int> s;
+    int choice;
+    for (int i = 0; i < operation; i++)
+    {
+        cin >> choice;
+        if (choice == 1)
+        {
+            cin >> input;
+            if (s.empty())
+            {
+                s.push(input);
+            }
+            else if (!s.empty() && input < s.top())
+            {
+                s.push(input);
+            }
+            else
+            {
+                s.push(s.top());
+            }
+        }
+        else if(choice==2){
+            s.pop();
+        }
+        else if(choice==3){
+            cout << s.top() << endl;
+        }
+    }
+    return 0;
+}
