@@ -1,0 +1,11 @@
+TreeNode *Maximum(TreeNode *tree){
+    if(tree==nullptr){
+        return 0;
+    }
+    if(tree->right==nullptr){
+        return tree;
+    }
+    else{
+        return Maximum(tree->right);
+    }
+}
