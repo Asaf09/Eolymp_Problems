@@ -1,0 +1,16 @@
+ListNode* intersection(ListNode* l1, ListNode* l2) {
+    ListNode* firstNode = l1;
+    ListNode* secondNode = l2;
+    while (firstNode != secondNode) {
+        if (firstNode == nullptr) {
+            firstNode = l1;
+        }
+        else firstNode = firstNode->next;
+
+        if (secondNode == nullptr) {
+            secondNode = l2;
+        }
+        else secondNode = secondNode->next;
+    }
+    return firstNode;
+}
