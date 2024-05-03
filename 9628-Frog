@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+#include <algorithm>
+using namespace std;
+int f(vector<int>& d1){
+    int s = d1.size(), i;
+    vector<int> d2(s);
+    d2[1] = abs(d1[1] - d1[0]);
+    d2[0] = 0;
+    for (i = 2; i < s; ++i){
+        d2[i] = min(d2[i - 1] + abs(d1[i - 1] - d1[i]), d2[i - 2] + abs(d1[i - 2] - d1[i]));
+    }
+    return d2[i - 1];
+}
+int main(){
+    int n;
+    cin >> n;
+    vector<int> d(n);
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> d[i];
+    }
+    cout << f(d);
+    return 0;
+}
