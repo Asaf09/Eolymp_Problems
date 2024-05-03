@@ -1,0 +1,13 @@
+bool isSymmetricAlternative(TreeNode* leftSubtree, TreeNode* rightSubtree) {
+    if (!leftSubtree && !rightSubtree)
+        return true;
+    if (!leftSubtree || !rightSubtree)
+        return false;
+    return (leftSubtree->val == rightSubtree->val) && isSymmetricAlternative(leftSubtree->left, rightSubtree->right) && isSymmetricAlternative(leftSubtree->right, rightSubtree->left);
+}
+
+bool isSymmetric(TreeNode* root) {
+    if (!root)
+        return true;
+    else return isSymmetricAlternative(root->left, root->right);
+}
