@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+#include <vector>
+struct MyTime{
+    int hour,min,sec;
+};
+void swapFunction(MyTime &a,MyTime &b);
+void stone_sort(vector <MyTime> &v1);
+int main(){
+    int operation;
+    cin >> operation;
+    vector <MyTime> v(operation);
+    for(int i=0;i<operation;i++){
+        cin >> v[i].hour;
+        cin >> v[i].min;
+        cin >> v[i].sec;
+    }
+    stone_sort(v);
+    for(int i = 0; i < operation; i++){
+        cout << v[i].hour << " " << v[i].min << " " << v[i].sec << endl;
+    }
+    return 0;
+}
+void swapFunction(MyTime &a,MyTime &b){
+    MyTime temp=a;
+    a=b;
+    b=temp;
+}
+void stone_sort(vector <MyTime> &v1){
+    for(int i=0;i<v1.size()-1;i++){
+        for(int j=0;j<v1.size()-1-i;j++){
+            if(v1[j].hour>v1[j+1].hour){
+                swapFunction(v1[j],v1[j+1]);
+            }
+            else if(v1[j].hour==v1[j+1].hour){
+                if(v1[j].min>v1[j+1].min){
+                    swapFunction(v1[j],v1[j+1]);
+                }
+                else if(v1[j].min==v1[j+1].min){
+                    if(v1[j].sec>v1[j+1].sec){
+                        swapFunction(v1[j],v1[j+1]);
+                    }
+                }
+            }
+        }
+    }
+}
