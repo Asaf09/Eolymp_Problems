@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+int main(){
+    int n1,n2;
+    cin >> n1;
+    int *a=new int[n1];
+    for(int i=0;i<n1;i++){
+        cin >> a[i];
+    }
+    cin >> n2;
+    int *b=new int[n2];
+    for(int i=0;i<n2;i++){
+        cin >> b[i];
+    }
+    int *res=new int[n1+n2];
+
+    int p=0;
+    int q=0;
+    int j;
+    for(j=0;p<n1 && q<n2;j++){
+        if(a[p]<=b[q]){
+            res[j]=a[p];
+            p++;
+        }
+        else if(b[q]<a[p]){
+            res[j]=b[q];
+            q++;
+        }
+    }
+    while(p<n1) res[j++]=a[p++];
+    while(q<n2) res[j++]=b[q++];
+    cout << endl;
+    for(int i=0;i<n1+n2;i++){
+        cout << res[i] << " ";
+    }
+    return 0;
+    delete[] a;
+    delete[] b;
+    delete[] res;
+}
