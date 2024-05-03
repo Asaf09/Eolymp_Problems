@@ -1,0 +1,16 @@
+TreeNode *Prev(TreeNode *node){
+    if(!node) return NULL;
+
+    if(node->left!=nullptr){
+        node=node->left;
+        while(node->right!=nullptr){
+            node=node->right;
+        }
+        return node;
+    }
+
+    if(node->parent!=nullptr && node==node->parent->left){
+        node=node->parent;
+    }
+    return node->parent;
+}
