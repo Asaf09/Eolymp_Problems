@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+vector<bool> visited;
+vector<vector<int>> mat;
+int v, e;
+
+void dfs(int node) {
+    visited[node] = true;
+
+    for (int j = 1; j <= v; j++) {
+        if (visited[j] == false && mat[node][j] == 1) {
+            dfs(j);
+        }
+    }
+}
+
+int main() {
+    cin >> v >> e;
+    visited.assign(v + 1, false);
+    mat.assign(v + 1, vector<int>(v + 1, 0));
+
+    int a, b;
+    for (int i = 1; i <= e; i++) {
+        cin >> a >> b;
+        mat[a][b] = 1;
+        mat[b][a] = 1;
+    }
+
+    int components = 0;
+    for (int i = 1; i <= v; i++) {
+        if (!visited[i]) {
+            dfs(i);
+            components++;
+        }
+    }
+
+    cout << components - 1 << endl;
+    return 0;
+}
