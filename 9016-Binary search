@@ -1,0 +1,28 @@
+#include <stdio.h>
+int binarySearch(int* arr,int num,int size){
+    int left = 0, right = size - 1;
+    while (left <= right){
+        int middle = (left + right) / 2;
+        if (arr[middle] == num) return 1;
+        else if (arr[middle] > num){
+            right = middle - 1;
+        }else left = middle + 1;
+    }
+    return 0;    
+}
+int main(){
+    int n, q;
+    scanf("%d %d",&n,&q);
+    int numbers[n];
+    int c;
+    for (int i = 0; i < n; ++i) scanf("%d",&numbers[i]);
+    for (int i = 0; i < q; ++i) 
+    {    scanf("%d", &c);
+        if (binarySearch(numbers,c,n)){
+            printf("YES");
+        }else printf("NO");
+        printf("\n");
+    }
+    
+    return 0;
+}
