@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+
+int main(){
+    int ncar,capacity;
+    cin >> ncar >> capacity;
+    vector <int> container,maks;
+    for(int i=0;i<ncar;i++){
+        int value;
+        cin >> value;
+        if(container.empty()){
+            container.push_back(value);
+            maks.push_back(value);
+        }
+        else{
+            container.push_back(value);
+            if(value<maks[maks.size()-1]){
+                maks.push_back(maks[maks.size()-1]);
+            }
+            else{
+                maks.push_back(value);
+            }
+        }
+    }
+    int condition=0;
+    for(int i=1;i<container.size();i++){
+        if(container[i]<maks[i-1]){
+            if(container[i]+maks[i-1]>capacity){
+                cout << "No" << endl;
+                condition=1;
+                break;
+
+            }
+        }
+    }
+    if(condition==0){
+        cout << "Yes" << endl;
+    }
+    return 0;
+}
