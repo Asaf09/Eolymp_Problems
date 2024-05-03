@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+    int v,e;
+    cin >> v >> e;
+    int a,b;
+    int count=0;
+    int t=0;
+    int mat[v][v];
+    memset(mat,0,sizeof(mat));
+    for(int i=0;i<e;i++){
+        cin >> a >> b;
+        mat[a-1][b-1]=1;
+        mat[b-1][a-1]=1;
+    }
+    for(int i=0;i<v;i++){
+        for(int j=0;j<v;j++){
+            count=0;
+            if(mat[i][j]==1){
+                count++;
+            }
+            if(count<1 && i!=j){
+                t=1;
+                break;
+            }
+        }
+    }
+    if(t==0) cout << "YES" << endl;
+    else cout << "NO" << endl;
+    return 0;
+}
