@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+void swapFunction(int&a, int&b){
+    int temp = a;
+    a = b;
+    b = temp;
+}
+int bubble(vector<int>&v){
+    int step = 0;
+    for(int i = 0; i < v.size() - 1; i++){
+        for(int j = i+1; j < v.size(); j++){
+            if(v[i] > v[j]){
+                swapFunction(v[i], v[j]);
+                step+=1;
+            }
+        }
+    }
+    return step;
+}
+
+int main(){
+    int Casetest, numelements, value;
+    cin >> Casetest;
+    for(int i = 0; i < Casetest; i++){
+        vector<int>v1;
+        cin >> numelements;
+        for(int j = 0; j < numelements; j++){
+            cin >> value;
+            v1.push_back(value);
+        }
+        cout << "Optimal train swapping takes " << bubble(v1) << " swaps." << endl; 
+    }
+    return 0;
+}
